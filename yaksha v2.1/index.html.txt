@@ -1,0 +1,27 @@
+<index.html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yaksha Wall</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <h1>Yaksha Wall</h1>
+    <p>Seja bem-vindo!</p>
+  </header>
+
+  <main>
+    <div class="wallpaper-box">
+      <img src="10828.png" alt="Wallpaper Gojo" />
+      <a href="10828.png" download class="btn">Baixe aqui</a>
+    </div>
+  </main>
+
+  <button id="topButton" onclick="voltarAoTopo()">↑</button>
+
+  <script src="script.js"></script>
+</body>
+</html>
