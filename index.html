@@ -5,102 +5,123 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Yakwalls - Wallpapers</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+  
     }
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
-    body {
-      font-family: 'Orbitron', sans-serif;
-      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-      color: white;
-      min-height: 100vh;
-    }
+  body {
+    font-family: 'Orbitron', sans-serif;
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    color: white;
+    min-height: 100vh;
+  }
 
-    header {
-      padding: 1rem;
-      text-align: center;
-      background: rgba(0, 0, 0, 0.6);
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-    }
+  header {
+    padding: 1rem;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.6);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  }
 
-    header h1 {
-      font-size: 2.5rem;
-      color: #00fff7;
-    }
+  header h1 {
+    font-size: 2.5rem;
+    color: #00fff7;
+  }
 
-    .section-title {
-      font-size: 1.8rem;
-      margin: 2rem 0 1rem;
-      text-align: center;
-      color: #00fff7;
-    }
+  .section-title {
+    font-size: 1.8rem;
+    margin: 2rem 0 1rem;
+    text-align: center;
+    color: #00fff7;
+  }
 
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    padding: 2rem;
+  }
+
+  @media (max-width: 1024px) {
     .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 1rem;
-      padding: 2rem;
+      grid-template-columns: repeat(3, 1fr);
     }
+  }
 
-    .card {
-      position: relative;
-      overflow: hidden;
-      border-radius: 16px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-      transition: transform 0.3s;
+  @media (max-width: 768px) {
+    .gallery {
+      grid-template-columns: repeat(2, 1fr);
     }
+  }
 
-    .card:hover {
-      transform: scale(1.03);
+  @media (max-width: 480px) {
+    .gallery {
+      grid-template-columns: 1fr;
     }
+  }
 
-    .card img {
-      width: 100%;
-      display: block;
-    }
+  .card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s;
+  }
 
-    .download-btn {
-      position: absolute;
-      bottom: 10px;
-      right: 10px;
-      background: #00fff7;
-      color: #000;
-      border: none;
-      padding: 0.5rem 1rem;
-      border-radius: 10px;
-      cursor: pointer;
-      font-weight: bold;
-      opacity: 0;
-      transition: opacity 0.3s;
-    }
+  .card:hover {
+    transform: scale(1.03);
+  }
 
-    .card:hover .download-btn {
-      opacity: 1;
-    }
+  .card img {
+    width: 100%;
+    display: block;
+  }
 
-    footer {
-      text-align: center;
-      padding: 1rem;
-      background: rgba(0, 0, 0, 0.6);
-      font-size: 0.9rem;
-    }
+  .download-btn {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: #00fff7;
+    color: #000;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
 
-    .donate {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: #ff4081;
-      color: white;
-      padding: 0.75rem 1.25rem;
-      border-radius: 12px;
-      text-decoration: none;
-      box-shadow: 0 0 10px #ff4081;
-      font-weight: bold;
-    }
-  </style>
+  .card:hover .download-btn {
+    opacity: 1;
+  }
+
+  footer {
+    text-align: center;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.6);
+    font-size: 0.9rem;
+  }
+
+  .donate {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #ff4081;
+    color: white;
+    padding: 0.75rem 1.25rem;
+    border-radius: 12px;
+    text-decoration: none;
+    box-shadow: 0 0 10px #ff4081;
+    font-weight: bold;
+  }
+</style>
+
 </head>
 <body>
   <header>
