@@ -31,6 +31,13 @@
       color: #00fff7;
     }
 
+    .section-title {
+      font-size: 1.8rem;
+      margin: 2rem 0 1rem;
+      text-align: center;
+      color: #00fff7;
+    }
+
     .gallery {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -100,7 +107,11 @@
     <h1>Yakwalls</h1>
   </header>
 
-  <main class="gallery" id="gallery"></main>
+  <h2 class="section-title">Wallpapers</h2>
+  <section class="gallery" id="wallpapers-section"></section>
+
+  <h2 class="section-title">Ícones</h2>
+  <section class="gallery" id="icons-section"></section>
 
   <a class="donate" href="https://www.buymeacoffee.com/seulink" target="_blank">Doe 💖</a>
 
@@ -112,15 +123,11 @@
     const wallpapers = ["imagem1.jpg", "imagem2.jpg", "imagem3.jpg", "imagem4.jpg", "imagem5.png", "imagem6.png",
       "imagem7.png", "imagem8.png", "imagem9.png", "imagem10.jpg", "imagem11.jpg", "imagem12.png",
       "imagem13.webp", "imagem14.png", "imagem26.webp", "imagem27.jpg", "imagem28.jpg", "imagem29.jpg",
-      "imagem30.jpg", "imagem31.jpg", "imagem37.jpg", "imagem38.jpg", "imagem39.jpg", "imagem40.jpg"
-    ];
-    
+      "imagem30.jpg", "imagem31.jpg", "imagem37.jpg", "imagem38.jpg", "imagem39.jpg", "imagem40.jpg"];
+
     const icons = ["imagem15.jpg", "imagem16.jpg", "imagem17.jpg", "imagem18.jpg", "imagem19.jpg", "imagem20.jpg",
       "imagem21.jpg", "imagem22.jpg", "imagem23.jpg", "imagem24.jpg", "imagem25.jpg", "imagem32.webp", 
-      "imagem33.jpg", "imagem34.jpeg", "imagem35.jpg", "imagem36.jpg"
-    ];
-
-    const gallery = document.getElementById("gallery");
+      "imagem33.jpg", "imagem34.jpeg", "imagem35.jpg", "imagem36.jpg"];
 
     function createCard(src, folder) {
       const card = document.createElement("div");
@@ -138,11 +145,14 @@
 
       card.appendChild(img);
       card.appendChild(btn);
-      gallery.appendChild(card);
+      return card;
     }
 
-    wallpapers.forEach(name => createCard(name, "wallpapers"));
-    icons.forEach(name => createCard(name, "icons"));
+    const wallpapersSection = document.getElementById("wallpapers-section");
+    const iconsSection = document.getElementById("icons-section");
+
+    wallpapers.forEach(name => wallpapersSection.appendChild(createCard(name, "wallpapers")));
+    icons.forEach(name => iconsSection.appendChild(createCard(name, "icons")));
   </script>
 </body>
 </html>
