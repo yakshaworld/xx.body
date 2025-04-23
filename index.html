@@ -100,32 +100,41 @@
     <h1>Yakwalls</h1>
   </header>
 
-  <main class="gallery">
-    <!-- Wallpapers -->
-    <div class="card">
-      <img src="wallpapers/wallpaper1.jpg" alt="Wallpaper 1">
-      <a class="download-btn" href="wallpapers/wallpaper1.jpg" download>Baixar</a>
-    </div>
-    <div class="card">
-      <img src="wallpapers/wallpaper2.jpg" alt="Wallpaper 2">
-      <a class="download-btn" href="wallpapers/wallpaper2.jpg" download>Baixar</a>
-    </div>
-
-    <!-- Ícones -->
-    <div class="card">
-      <img src="icons/icon1.png" alt="Ícone 1">
-      <a class="download-btn" href="icons/icon1.png" download>Baixar</a>
-    </div>
-    <div class="card">
-      <img src="icons/icon2.png" alt="Ícone 2">
-      <a class="download-btn" href="icons/icon2.png" download>Baixar</a>
-    </div>
-  </main>
+  <main class="gallery" id="gallery"></main>
 
   <a class="donate" href="https://www.buymeacoffee.com/seulink" target="_blank">Doe 💖</a>
 
   <footer>
     © 2025 Yakwalls. Todos os direitos reservados.
   </footer>
+
+  <script>
+    const wallpapers = ["wallpaper1.jpg", "wallpaper2.jpg"];
+    const icons = ["icon1.png", "icon2.png"];
+
+    const gallery = document.getElementById("gallery");
+
+    function createCard(src, folder) {
+      const card = document.createElement("div");
+      card.className = "card";
+
+      const img = document.createElement("img");
+      img.src = `${folder}/${src}`;
+      img.alt = src;
+
+      const btn = document.createElement("a");
+      btn.className = "download-btn";
+      btn.href = `${folder}/${src}`;
+      btn.download = "";
+      btn.innerText = "Baixar";
+
+      card.appendChild(img);
+      card.appendChild(btn);
+      gallery.appendChild(card);
+    }
+
+    wallpapers.forEach(name => createCard(name, "wallpapers"));
+    icons.forEach(name => createCard(name, "icons"));
+  </script>
 </body>
 </html>
