@@ -35,6 +35,7 @@
 
     .auth-menu {
       position: relative;
+      color: white;
     }
 
     .auth-button {
@@ -54,6 +55,7 @@
       border: 1px solid #00fff7;
       border-radius: 5px;
       margin-top: 0.5rem;
+      z-index: 10;
     }
 
     .auth-options button {
@@ -70,6 +72,16 @@
     .auth-options button:hover {
       background: #00fff7;
       color: #000;
+    }
+
+    .profile-controls button {
+      margin-left: 0.5rem;
+      background: #00fff7;
+      color: black;
+      border: none;
+      padding: 0.3rem 0.6rem;
+      border-radius: 5px;
+      cursor: pointer;
     }
 
     .section-title {
@@ -170,112 +182,193 @@
         <button onclick="showLogin()">Login</button>
         <button onclick="showRegister()">Registrar</button>
       </div>
-      <div id="user-info" style="display:none; color: white;">Olá, <span id="user-name"></span>!</div>
+      <div id="user-info" style="display:none;">
+        <span>Olá, <span id="user-name"></span>!</span>
+        <div class="profile-controls">
+          <button onclick="editProfileName()">Trocar Nome</button>
+          <button onclick="changeProfilePhoto()">Foto de Perfil</button>
+          <button onclick="uploadImage()">Adicionar Imagem</button>
+          <button onclick="logoutUser()">Sair</button>
+        </div>
+      </div>
     </div>
   </header>
 
   <h2 class="section-title">Wallpapers</h2>
-  <section class="gallery" id="wallpapers-section"></section>
+  <section class="gallery" id="wallpapers-section">
+    <div class="card">
+      <img src="wallpapers/imagem1.jpg" alt="Wallpaper 1">
+      <button class="download-btn" onclick="window.location.href='wallpapers/imagem1.jpg'">Baixar</button>
+    </div>
+    <div class="card">
+      <img src="wallpapers/imagem2.jpg" alt="Wallpaper 2">
+      <button class="download-btn" onclick="window.location.href='wallpapers/imagem2.jpg'">Baixar</button>
+    </div>
+    <div class="card">
+      <img src="wallpapers/imagem3.jpg" alt="Wallpaper 3">
+      <button class="download-btn" onclick="window.location.href='wallpapers/imagem3.jpg'">Baixar</button>
+    </div>
+    <div class="card">
+      <img src="wallpapers/imagem4.jpg" alt="Wallpaper 4">
+      <button class="download-btn" onclick="window.location.href='wallpapers/imagem4.jpg'">Baixar</button>
+    </div>
+    <div class="card">
+      <img src="wallpapers/imagem5.png" alt="Wallpaper 5">
+      <button class="download-btn" onclick="window.location.href='wallpapers/imagem5.png'">Baixar</button>
+    </div>
+    <div class="card">
+      <img src="wallpapers/imagem6.png" alt="Wallpaper 6">
+      <button class="download-btn" onclick="window.location.href='wallpapers/imagem6.png'">Baixar</button>
+    </div>
+    <div class="card">
+      <img src="wallpapers/imagem7.png" alt="Wallpaper 7">
+      <button class="download-btn" onclick="window.location.href='wallpapers/imagem7.png'">Baixar</button>
+    </div>
+    <div class="card">
+      <img src="wallpapers/imagem8.png" alt="Wallpaper 8">
+      <button class="download-btn" onclick="window.location.href='wallpapers/imagem8.png'">Baixar</button>
+    </div>
+    <div class="card">
+      <img src="wallpapers/imagem9.png" alt="Wallpaper 9">
+      <button class="download-btn" onclick="window.location.href='wallpapers/imagem9.png'">Baixar</button>
+    </div>
+    <div class="card">
+      <img src="wallpapers/imagem10.jpg" alt="Wallpaper 10">
+      <button class="download-btn" onclick="window.location.href='wallpapers/imagem10.jpg'">Baixar</button>
+    </div>
+    <div class="card">
+      <img src="wallpapers/imagem11.jpg" alt="Wallpaper 11">
+      <button class="download-btn" onclick="window.location.href='wallpapers/imagem11.jpg'">Baixar</button>
+    </div>
+    <div class="card">
+      <img src="wallpapers/imagem12.png" alt="Wallpaper 12">
+      <button class="download-btn" onclick="window.location.href='wallpapers/imagem12.png'">Baixar</button>
+    </div>
+    <div class="card">
+      <img src="wallpapers/imagem13.webp" alt="Wallpaper 13">
+      <button class="download-btn" onclick="window.location.href='wallpapers/imagem13.webp'">Baixar</button>
+    </div>
+    <div class="card">
+      <img src="wallpapers/imagem14.png" alt="Wallpaper 14">
+      <button class="download-btn" onclick="window.location.href='wallpapers/imagem14.png'">Baixar</button>
+    </div>
+    <div class="card">
+      <img src="wallpapers/imagem26.webp" alt="Wallpaper 26">
+      <button class="download-btn" onclick="window.location.href='wallpapers/imagem26.webp'">Baixar</button>
+    </div>
+    <div class="card">
+      <img src="wallpapers/imagem27.jpg" alt="Wallpaper 27">
+      <button class="download-btn" onclick="window.location.href='wallpapers/imagem27.jpg'">Baixar</button>
+    </div>
+    <div class="card">
+      <img src="wallpapers/imagem28.jpg" alt="Wallpaper 28">
+      <button class="download-btn" onclick="window.location.href='wallpapers/imagem28.jpg'">Baixar</button>
+    </div>
+    <div class="card">
+      <img src="wallpapers/imagem29.jpg" alt="Wallpaper 29">
+      <button class="download-btn" onclick="window.location.href='wallpapers/imagem29.jpg'">Baixar</button>
+    </div>
+    <div class="card">
+      <img src="wallpapers/imagem30.jpg" alt="Wallpaper 30">
+      <button class="download-btn" onclick="window.location.href='wallpapers/imagem30.jpg'">Baixar</button>
+    </div>
+    <div class="card">
+      <img src="wallpapers/imagem31.jpg" alt="Wallpaper 31">
+      <button class="download-btn" onclick="window.location.href='wallpapers/imagem31.jpg'">Baixar</button>
+    </div>
+    <div class="card">
+      <img src="wallpapers/imagem37.jpg" alt="Wallpaper 37">
+      <button class="download-btn" onclick="window.location.href='wallpapers/imagem37.jpg'">Baixar</button>
+    </div>
+    <div class="card">
+      <img src="wallpapers/imagem38.jpg" alt="Wallpaper 38">
+      <button class="download-btn" onclick="window.location.href='wallpapers/imagem38.jpg'">Baixar</button>
+    </div>
+    <div class="card">
+      <img src="wallpapers/imagem39.jpg" alt="Wallpaper 39">
+      <button class="download-btn" onclick="window.location.href='wallpapers/imagem39.jpg'">Baixar</button>
+    </div>
+    <div class="card">
+      <img src="wallpapers/imagem40.jpg" alt="Wallpaper 40">
+      <button class="download-btn" onclick="window.location.href='wallpapers/imagem40.jpg'">Baixar</button>
+    </div>
+    <div class="card">
+      <img src="wallpapers/imagem41.webp" alt="Wallpaper 41">
+      <button class="download-btn" onclick="window.location.href='wallpapers/imagem41.webp'">Baixar</button>
+    </div>
+    <div class="card">
+      <img src="wallpapers/imagem42.webp" alt="Wallpaper 42">
+      <button class="download-btn" onclick="window.location.href='wallpapers/imagem42.webp'">Baixar</button>
+    </div>
+    <div class="card">
+      <img src="wallpapers/imagem43.webp" alt="Wallpaper 43">
+      <button class="download-btn" onclick="window.location.href='wallpapers/imagem43.webp'">Baixar</button>
+    </div>
+    <div class="card">
+      <img src="wallpapers/imagem44.webp" alt="Wallpaper 44">
+      <button class="download-btn" onclick="window.location.href='wallpapers/imagem44.webp'">Baixar</button>
+    </div>
+    <div class="card">
+      <img src="wallpapers/imagem45.webp" alt="Wallpaper 45">
+      <button class="download-btn" onclick="window.location.href='wallpapers/imagem45.webp'">Baixar</button>
+    </div>
+    <div class="card">
+      <img src="wallpapers/imagem46.webp" alt="Wallpaper 46">
+      <button class="download-btn" onclick="window.location.href='wallpapers/imagem46.webp'">Baixar</button>
+    </div>
+  </section>
 
   <h2 class="section-title">Ícones</h2>
-  <section class="gallery" id="icons-section"></section>
-
-  <a class="donate" href="doar.html">Doe 💖</a>
+  <section class="gallery" id="icons-section">
+    <div class="card">
+      <img src="icons/imagem15.jpg" alt="Ícone 1">
+      <button class="download-btn" onclick="window.location.href='icons/imagem15.jpg'">Baixar</button>
+    </div>
+    <div class="card">
+      <img src="icons/imagem16.jpg" alt="Ícone 2">
+      <button class="download-btn" onclick="window.location.href='icons/imagem16.jpg'">Baixar</button>
+    </div>
+    <div class="card">
+      <img src="icons/imagem17.jpg" alt="Ícone 3">
+      <button class="download-btn" onclick="window.location.href='icons/imagem17.jpg'">Baixar</button>
+    </div>
+    <div class="card">
+      <img src="icons/imagem18.jpg" alt="Ícone 4">
+      <button class="download-btn" onclick="window.location.href='icons/imagem18.jpg'">Baixar</button>
+    </div>
+    <div class="card">
+      <img src="icons/imagem19.jpg" alt="Ícone 5">
+      <button class="download-btn" onclick="window.location.href='icons/imagem19.jpg'">Baixar</button>
+    </div>
+    <div class="card">
+      <img src="icons/imagem20.jpg" alt="Ícone 6">
+      <button class="download-btn" onclick="window.location.href='icons/imagem20.jpg'">Baixar</button>
+    </div>
+    <div class="card">
+      <img src="icons/imagem21.jpg" alt="Ícone 7">
+      <button class="download-btn" onclick="window.location.href='icons/imagem21.jpg'">Baixar</button>
+    </div>
+    <div class="card">
+      <img src="icons/imagem22.jpg" alt="Ícone 8">
+      <button class="download-btn" onclick="window.location.href='icons/imagem22.jpg'">Baixar</button>
+    </div>
+    <div class="card">
+      <img src="icons/imagem23.jpg" alt="Ícone 9">
+      <button class="download-btn" onclick="window.location.href='icons/imagem23.jpg'">Baixar</button>
+    </div>
+    <div class="card">
+      <img src="icons/imagem24.jpg" alt="Ícone 10">
+      <button class="download-btn" onclick="window.location.href='icons/imagem24.jpg'">Baixar</button>
+    </div>
+    <div class="card">
+      <img src="icons/imagem25.jpg" alt="Ícone 11">
+      <button class="download-btn" onclick="window.location.href='icons/imagem25.jpg'">Baixar</button>
+    </div>
+  </section>
 
   <footer>
-    © 2025 Yaksha. Todos os direitos reservados.
+    <p>© 2025 Yaksha - Todos os direitos reservados.</p>
+    <a href="https://www.buymeacoffee.com" class="donate">Doe um café!</a>
   </footer>
-
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-
-    const firebaseConfig = {
-      apiKey: "AIzaSyBcQSsRMmFYzs-KTYuhSd9kDjA-RdbyiTM",
-      authDomain: "yaksha-world.firebaseapp.com",
-      projectId: "yaksha-world",
-      storageBucket: "yaksha-world.appspot.com",
-      messagingSenderId: "574454618922",
-      appId: "1:574454618922:web:e05edb4045d70a811ddc53",
-      measurementId: "G-C03NH1R4WZ"
-    };
-
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-
-    function toggleAuthOptions() {
-      const menu = document.getElementById("auth-options");
-      menu.style.display = menu.style.display === "block" ? "none" : "block";
-    }
-
-    window.showLogin = () => {
-      const email = prompt("Email:");
-      const password = prompt("Senha:");
-      signInWithEmailAndPassword(auth, email, password)
-        .then(userCredential => alert("Login bem-sucedido!"))
-        .catch(error => alert("Erro no login: " + error.message));
-    };
-
-    window.showRegister = () => {
-      const email = prompt("Novo Email:");
-      const password = prompt("Nova Senha:");
-      createUserWithEmailAndPassword(auth, email, password)
-        .then(userCredential => alert("Registro bem-sucedido!"))
-        .catch(error => alert("Erro no registro: " + error.message));
-    };
-
-    onAuthStateChanged(auth, user => {
-      const authMenu = document.querySelector(".auth-menu");
-      const authOptions = document.getElementById("auth-options");
-      const userInfo = document.getElementById("user-info");
-      if (user) {
-        authOptions.style.display = "none";
-        userInfo.style.display = "block";
-        document.getElementById("user-name").innerText = user.email;
-        document.querySelector(".auth-button").style.display = "none";
-      } else {
-        userInfo.style.display = "none";
-        document.querySelector(".auth-button").style.display = "inline";
-      }
-    });
-  </script>
-
-  <script>
-    const wallpapers = ["imagem1.jpg", "imagem2.jpg", "imagem3.jpg", "imagem4.jpg", "imagem5.png", "imagem6.png",
-      "imagem7.png", "imagem8.png", "imagem9.png", "imagem10.jpg", "imagem11.jpg", "imagem12.png",
-      "imagem13.webp", "imagem14.png", "imagem26.webp", "imagem27.jpg", "imagem28.jpg", "imagem29.jpg",
-      "imagem30.jpg", "imagem31.jpg", "imagem37.jpg", "imagem38.jpg", "imagem39.jpg", "imagem40.jpg",
-      "imagem41.webp", "imagem42.webp", "imagem43.webp", "imagem44.webp", "imagem45.webp", "imagem46.webp"];
-
-    const icons = ["imagem15.jpg", "imagem16.jpg", "imagem17.jpg", "imagem18.jpg", "imagem19.jpg", "imagem20.jpg",
-      "imagem21.jpg", "imagem22.jpg", "imagem23.jpg", "imagem24.jpg", "imagem25.jpg", "imagem32.webp",
-      "imagem33.jpg", "imagem34.jpeg", "imagem35.jpg", "imagem36.jpg", "imagem47.jpg", "imagem48.jpg",
-      "imagem49.jpg", "imagem50.jpg"];
-
-    function createCard(src, folder) {
-      const card = document.createElement("div");
-      card.className = "card";
-
-      const img = document.createElement("img");
-      img.src = `${folder}/${src}`;
-      img.alt = src;
-
-      const btn = document.createElement("a");
-      btn.className = "download-btn";
-      btn.href = `${folder}/${src}`;
-      btn.download = "";
-      btn.innerText = "Baixar";
-
-      card.appendChild(img);
-      card.appendChild(btn);
-      return card;
-    }
-
-    const wallpapersSection = document.getElementById("wallpapers-section");
-    const iconsSection = document.getElementById("icons-section");
-
-    wallpapers.forEach(name => wallpapersSection.appendChild(createCard(name, "wallpapers")));
-    icons.forEach(name => iconsSection.appendChild(createCard(name, "icons")));
-  </script>
 </body>
 </html>
