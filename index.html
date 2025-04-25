@@ -364,11 +364,85 @@
       <img src="icons/imagem25.jpg" alt="Ícone 11">
       <button class="download-btn" onclick="window.location.href='icons/imagem25.jpg'">Baixar</button>
     </div>
+    <div class="card">
+      <img src="icons/imagem32.webp" alt="Ícone 12">
+      <button class="download-btn" onclick="window.location.href='icons/imagem32.webp'">Baixar</button>
+    </div>
+     <div class="card">
+      <img src="icons/imagem33.jpg" alt="Ícone 13">
+      <button class="download-btn" onclick="window.location.href='icons/imagem33.jpg'">Baixar</button>
+    </div>
+    <div class="card">
+      <img src="icons/imagem34.jpeg" alt="Ícone 14">
+      <button class="download-btn" onclick="window.location.href='icons/imagem34.jpeg'">Baixar</button>
+    </div>
+     <div class="card">
+      <img src="icons/imagem35.jpg" alt="Ícone 15">
+      <button class="download-btn" onclick="window.location.href='icons/imagem35.jpg'">Baixar</button>
+    </div>
+     <div class="card">
+      <img src="icons/imagem36.jpg" alt="Ícone 16">
+      <button class="download-btn" onclick="window.location.href='icons/imagem36.jpg'">Baixar</button>
+    </div>
+     <div class="card">
+      <img src="icons/imagem47.jpg" alt="Ícone 17">
+      <button class="download-btn" onclick="window.location.href='icons/imagem47.jpg'">Baixar</button>
+    </div>
+     <div class="card">
+      <img src="icons/imagem48.jpg" alt="Ícone 18">
+      <button class="download-btn" onclick="window.location.href='icons/imagem48.jpg'">Baixar</button>
+    </div>
+     <div class="card">
+      <img src="icons/imagem49.jpg" alt="Ícone 19">
+      <button class="download-btn" onclick="window.location.href='icons/imagem49.jpg'">Baixar</button>
+    </div>
+     <div class="card">
+      <img src="icons/imagem50.jpg" alt="Ícone 20">
+      <button class="download-btn" onclick="window.location.href='icons/imagem50.jpg'">Baixar</button>
+    </div>
   </section>
 
   <footer>
     <p>© 2025 Yaksha - Todos os direitos reservados.</p>
     <a href="https://www.buymeacoffee.com" class="donate">Doe um café!</a>
   </footer>
+<script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyBcQSsRMmFYzs-KTYuhSd9kDjA-RdbyiTM",
+      authDomain: "yaksha-world.firebaseapp.com",
+      projectId: "yaksha-world",
+      storageBucket: "yaksha-world.firebasestorage.app",
+      messagingSenderId: "574454618922",
+      appId: "1:574454618922:web:e05edb4045d70a811ddc53",
+      measurementId: "G-C03NH1R4WZ"
+    };
+
+    const app = firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+
+      function toggleAuthOptions() {
+      const authOptions = document.getElementById('auth-options');
+      authOptions.style.display = authOptions.style.display === 'none' ? 'block' : 'none';
+    }
+
+    function showLogin() {    
+}
+
+    function showRegister() {    
+}
+
+    function logoutUser() {    
+}
+
+    function editProfileName() {    
+}
+
+    function changeProfilePhoto() {
+
+    }
+
+    function uploadImage() {
+    }
+  </script>
 </body>
 </html>
