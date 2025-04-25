@@ -6,7 +6,7 @@
   <title>Yaksha - Wallpapers e Ícones Incríveis</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    * {
+   * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
@@ -178,7 +178,7 @@
     <h1>YAKSHA WALLPAPERS</h1>
     <div class="auth-menu">
       <button class="auth-button" onclick="toggleAuthOptions()">Login/Registro</button>
-      <div class="auth-options" id="auth-options">
+      <div class="auth-options" id="auth-options" style="display:none;">
         <button onclick="showLogin()">Login</button>
         <button onclick="showRegister()">Registrar</button>
       </div>
@@ -401,7 +401,7 @@
       <button class="download-btn" onclick="window.location.href='icons/imagem50.jpg'">Baixar</button>
     </div>
   </section>
-
+  
   <footer>
     <p>© 2025 Yaksha - Todos os direitos reservados.</p>
     <a href="doar.html" class="donate">Doar 💖!</a>
@@ -422,6 +422,19 @@
 
     const app = firebase.initializeApp(firebaseConfig);
     const auth = firebase.auth();
+
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        
+        document.getElementById('user-name').innerText = user.displayName || 'Usuário';
+        document.getElementById('user-info').style.display = 'block';
+        document.getElementById('auth-options').style.display = 'none';
+      } else {
+
+        document.getElementById('user-info').style.display = 'none';
+        document.getElementById('auth-options').style.display = 'block';
+      }
+    });
 
     function toggleAuthOptions() {
       const authOptions = document.getElementById('auth-options');
@@ -460,6 +473,7 @@
       auth.signOut()
         .then(() => {
           document.getElementById('user-info').style.display = 'none';
+          document.getElementById('auth-options').style.display = 'block';
         })
         .catch(error => alert('Erro ao sair: ' + error.message));
     }
@@ -476,9 +490,11 @@
     }
 
     function changeProfilePhoto() {
+
     }
 
     function uploadImage() {
+
     }
   </script>
 </body>
