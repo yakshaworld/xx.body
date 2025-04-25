@@ -21,7 +21,9 @@
 
     header {
       padding: 1rem;
-      text-align: center;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       background: rgba(0, 0, 0, 0.6);
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
     }
@@ -29,6 +31,45 @@
     header h1 {
       font-size: 2.5rem;
       color: #00fff7;
+    }
+
+    .auth-menu {
+      position: relative;
+    }
+
+    .auth-button {
+      background: none;
+      border: none;
+      color: #00fff7;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .auth-options {
+      display: none;
+      position: absolute;
+      right: 0;
+      top: 100%;
+      background: #000;
+      border: 1px solid #00fff7;
+      border-radius: 5px;
+      margin-top: 0.5rem;
+    }
+
+    .auth-options button {
+      display: block;
+      background: none;
+      border: none;
+      color: white;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      width: 100%;
+      text-align: left;
+    }
+
+    .auth-options button:hover {
+      background: #00fff7;
+      color: #000;
     }
 
     .section-title {
@@ -118,53 +159,20 @@
       box-shadow: 0 0 10px #ff4081;
       font-weight: bold;
     }
-
-    #auth-container {
-      background: rgba(0, 0, 0, 0.7);
-      padding: 2rem;
-      max-width: 400px;
-      margin: 2rem auto;
-      border-radius: 12px;
-      text-align: center;
-    }
-
-    #auth-container input {
-      display: block;
-      width: 100%;
-      margin: 0.5rem 0;
-      padding: 0.5rem;
-      border-radius: 8px;
-      border: none;
-    }
-
-    #auth-container button {
-      margin-top: 0.5rem;
-      padding: 0.5rem 1rem;
-      border: none;
-      border-radius: 8px;
-      background: #00fff7;
-      color: black;
-      font-weight: bold;
-      cursor: pointer;
-    }
   </style>
 </head>
 <body>
   <header>
     <h1>YAKSHA WALLPAPERS</h1>
+    <div class="auth-menu">
+      <button class="auth-button" onclick="toggleAuthOptions()">Login/Registro</button>
+      <div class="auth-options" id="auth-options">
+        <button onclick="showLogin()">Login</button>
+        <button onclick="showRegister()">Registrar</button>
+      </div>
+      <div id="user-info" style="display:none; color: white;">Olá, <span id="user-name"></span>!</div>
+    </div>
   </header>
-
-  <div id="auth-container">
-    <h2>Login</h2>
-    <input type="email" id="login-email" placeholder="Email" />
-    <input type="password" id="login-password" placeholder="Senha" />
-    <button onclick="login()">Entrar</button>
-
-    <h2>Cadastro</h2>
-    <input type="email" id="signup-email" placeholder="Email" />
-    <input type="password" id="signup-password" placeholder="Senha" />
-    <button onclick="signup()">Cadastrar</button>
-  </div>
 
   <h2 class="section-title">Wallpapers</h2>
   <section class="gallery" id="wallpapers-section"></section>
@@ -179,8 +187,8 @@
   </footer>
 
   <script type="module">
-    import { initializeApp } from 'https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js';
-    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js';
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
 
     const firebaseConfig = {
       apiKey: "AIzaSyBcQSsRMmFYzs-KTYuhSd9kDjA-RdbyiTM",
@@ -195,22 +203,44 @@
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
 
-    window.login = function() {
-      const email = document.getElementById("login-email").value;
-      const password = document.getElementById("login-password").value;
+    function toggleAuthOptions() {
+      const menu = document.getElementById("auth-options");
+      menu.style.display = menu.style.display === "block" ? "none" : "block";
+    }
+
+    window.showLogin = () => {
+      const email = prompt("Email:");
+      const password = prompt("Senha:");
       signInWithEmailAndPassword(auth, email, password)
-        .then(() => alert("Login realizado com sucesso!"))
-        .catch((error) => alert("Erro ao fazer login: " + error.message));
+        .then(userCredential => alert("Login bem-sucedido!"))
+        .catch(error => alert("Erro no login: " + error.message));
     };
 
-    window.signup = function() {
-      const email = document.getElementById("signup-email").value;
-      const password = document.getElementById("signup-password").value;
+    window.showRegister = () => {
+      const email = prompt("Novo Email:");
+      const password = prompt("Nova Senha:");
       createUserWithEmailAndPassword(auth, email, password)
-        .then(() => alert("Cadastro realizado com sucesso!"))
-        .catch((error) => alert("Erro ao cadastrar: " + error.message));
+        .then(userCredential => alert("Registro bem-sucedido!"))
+        .catch(error => alert("Erro no registro: " + error.message));
     };
 
+    onAuthStateChanged(auth, user => {
+      const authMenu = document.querySelector(".auth-menu");
+      const authOptions = document.getElementById("auth-options");
+      const userInfo = document.getElementById("user-info");
+      if (user) {
+        authOptions.style.display = "none";
+        userInfo.style.display = "block";
+        document.getElementById("user-name").innerText = user.email;
+        document.querySelector(".auth-button").style.display = "none";
+      } else {
+        userInfo.style.display = "none";
+        document.querySelector(".auth-button").style.display = "inline";
+      }
+    });
+  </script>
+
+  <script>
     const wallpapers = ["imagem1.jpg", "imagem2.jpg", "imagem3.jpg", "imagem4.jpg", "imagem5.png", "imagem6.png",
       "imagem7.png", "imagem8.png", "imagem9.png", "imagem10.jpg", "imagem11.jpg", "imagem12.png",
       "imagem13.webp", "imagem14.png", "imagem26.webp", "imagem27.jpg", "imagem28.jpg", "imagem29.jpg",
