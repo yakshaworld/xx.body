@@ -320,7 +320,7 @@
 
   <h2 class="section-title">Ícones</h2>
   <section class="gallery" id="icons-section">
-    <div class="card">
+ <div class="card">
       <img src="icons/imagem15.jpg" alt="Ícone 1">
       <button class="download-btn" onclick="window.location.href='icons/imagem15.jpg'">Baixar</button>
     </div>
@@ -406,7 +406,10 @@
     <p>© 2025 Yaksha - Todos os direitos reservados.</p>
     <a href="doar.html" class="donate">Doar 💖!</a>
   </footer>
-<script>
+
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
+  <script>
     const firebaseConfig = {
       apiKey: "AIzaSyBcQSsRMmFYzs-KTYuhSd9kDjA-RdbyiTM",
       authDomain: "yaksha-world.firebaseapp.com",
@@ -420,25 +423,59 @@
     const app = firebase.initializeApp(firebaseConfig);
     const auth = firebase.auth();
 
-      function toggleAuthOptions() {
+    function toggleAuthOptions() {
       const authOptions = document.getElementById('auth-options');
       authOptions.style.display = authOptions.style.display === 'none' ? 'block' : 'none';
     }
 
-    function showLogin() {    
-}
+    function showLogin() {
+      const email = prompt('Digite seu email:');
+      const password = prompt('Digite sua senha:');
+      
+      auth.signInWithEmailAndPassword(email, password)
+        .then(userCredential => {
+          const user = userCredential.user;
+          document.getElementById('user-name').innerText = user.displayName || 'Usuário';
+          document.getElementById('user-info').style.display = 'block';
+          toggleAuthOptions();
+        })
+        .catch(error => alert('Erro: ' + error.message));
+    }
 
-    function showRegister() {    
-}
+    function showRegister() {
+      const email = prompt('Digite seu email:');
+      const password = prompt('Digite sua senha:');
+      
+      auth.createUserWithEmailAndPassword(email, password)
+        .then(userCredential => {
+          const user = userCredential.user;
+          document.getElementById('user-name').innerText = user.displayName || 'Usuário';
+          document.getElementById('user-info').style.display = 'block';
+          toggleAuthOptions();
+        })
+        .catch(error => alert('Erro: ' + error.message));
+    }
 
-    function logoutUser() {    
-}
+    function logoutUser() {
+      auth.signOut()
+        .then(() => {
+          document.getElementById('user-info').style.display = 'none';
+        })
+        .catch(error => alert('Erro ao sair: ' + error.message));
+    }
 
-    function editProfileName() {    
-}
+    function editProfileName() {
+      const newName = prompt('Digite seu novo nome:');
+      const user = auth.currentUser;
+      
+      user.updateProfile({
+        displayName: newName
+      }).then(() => {
+        document.getElementById('user-name').innerText = newName;
+      }).catch(error => alert('Erro: ' + error.message));
+    }
 
     function changeProfilePhoto() {
-
     }
 
     function uploadImage() {
